@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+    {% block title %}<title>Blog</title>{% endblock %}
+    {% block head_import %} {% endblock %}
+</head>
+<body>
+    <ul class="navigation">
+        <li class="nav_component"><a href="{% url 'home-page' %}">Главная</a></li>
+        {% if user.is_authenticated %}
+            <li class="nav_component" style="float: right"><a href="{% url 'home-page' %}">Профиль</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'logout-page' %}">Выйти</a></li>
+            {% if user.is_admin %}
+            <li class="nav_component"><a href="{% url 'post-creation-page' %}">Создать</a></li>
+            {% endif %}
+        {% else %}
+            <li class="nav_component" style="float: right"><a href="{% url 'login-page' %}">Войти</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'register-page' %}">Регистрация</a></li>
+        {% endif %}
+    </ul>
+    <div class="main_container">
+
+    {% block content %} {% endblock %}
+
+    </div>
+    {% block body_import %} {% endblock %}
+</body>
+</html>
