@@ -1,0 +1,53 @@
+.main_container {
+    top: 100px;
+    left: 35%;
+    width: 30%
+}
+
+.form_box input {
+    width: 90%;
+    outline: none;
+    border: none;
+    border-bottom: 4px solid grey;
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.form_box input:hover {
+    background: #b4bdbf;
+}
+
+.form_box input:focus {
+    background: #b4bdbf;
+}
+
+.form_box input:checked {
+    background: red;
+}
+
+.form_box button {
+    width: 90%;
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 10px;
+    outline: none;
+    background: #6d7b85;
+    color: white;
+    border: 1px hidden;
+    border-radius: 15px;
+}
+
+.form_box button:hover {
+    background: #646e75;
+}
+
+.form_box ul {
+    list-style-type: none;
+    margin-left: 10px;
+    color: red;
+}

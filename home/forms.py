@@ -5,26 +5,36 @@ from .models import UserModel
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=60)
-    name = forms.CharField(max_length=20)
-    password1 = forms.CharField(widget=forms.PasswordInput())
-    password2 = forms.CharField(widget=forms.PasswordInput())
+    password1 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': 'Пароль', 'autocomplete': 'new-password'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': 'Подтверждение пароля', 'autocomplete': 'new-password'}))
 
     class Meta:
         model = UserModel
         fields = ['email', 'name', 'password1', 'password2']
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder': 'Email адрес'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Отображаемое имя'})
+        }
 
 
 class LoginForm(forms.ModelForm):
-    email = forms.EmailField(max_length=60)
-    password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = UserModel
         fields = ('email', 'password')
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder': 'Email адрес'}),
+            'password': forms.PasswordInput(attrs={'placeholder': 'Пароль'})
+        }
 
     def clean(self):
-        email = self.cleaned_data['email']
+        if 'email' in self.cleaned_data:
+            email = self.cleaned_data['email']
+        else:
+            email = ' '
+            raise forms.ValidationError('Некорректный Email')
         password = self.cleaned_data['password']
         if not authenticate(email=email, password=password):
             raise forms.ValidationError('Неверный Email или пароль')

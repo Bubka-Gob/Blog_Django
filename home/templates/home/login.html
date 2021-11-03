@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head_import %}
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+{% endblock %}
 {% block content %}
-    <form method="POST">{% csrf_token %}
-        {{form.as_p}}
+    <form method="POST" autocomplete="off" class="form_box">{% csrf_token %}
+        {{ form.non_field_errors }}
+        {{ form.source.errors }}
+        {{ form.source }}
+        <p>{{form.email}}</p>
+        {{form.email.errors}}
+        <p>{{form.password}}</p>
+        {{form.password.errors}}
         <button type="submit">Войти</button>
     </form>
 {% endblock %}
