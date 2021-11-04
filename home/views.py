@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from post.models import BlogPost
+from post.models import BlogPost, BlogImage
 from .forms import RegistrationForm, LoginForm
 
 
 def home_view (request):
     posts = BlogPost.objects.all()
-    return render(request, 'home/home.html', {'posts': posts})
+    posts_list = []
+    for post in posts:
+        images = BlogImage.objects.filter(blog_post = post)
+        images_list = []
+        for image in images:
+            images_list.append(image)
+        posts_list.append({'post': post, 'images': images_list})
+
+    return render(request, 'home/home.html', {'posts': posts_list})
 
 
 def register_view (request):

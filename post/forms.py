@@ -1,12 +1,12 @@
 from django import forms
-from .models import BlogPost
+from django.core.validators import FileExtensionValidator
 
 
-class PostForm (forms.ModelForm):
+class PostForm (forms.Form):
+    name = forms.CharField()
+    content = forms.CharField()
+    images = forms.ImageField(widget=forms.FileInput(attrs={'multiple': True}),
+                              required=False)
 
-    name = forms.CharField(required=True)
-    content = forms.CharField(required=True)
 
-    class Meta:
-        model = BlogPost
-        fields = ('name', 'content')
+
