@@ -2,14 +2,17 @@
 {% block content %}
     {% for post in posts %}
         <div class="post_container">
-            <div>
-                <h2>{{post.post.name}}</h2>
-                <p>{{post.post.date}}</p>
-            </div>
-            <p>{{post.post.content}}</p>
-            {% for image in post.images %}
-                <img src="{{image.image.url}}">
-            {% endfor %}
+            <a href="{% url 'post-full-page' blog_post_id=post.id %}">
+                <div>
+                    <h2 class="post_header">{{post.name}}</h2>
+                    {% if post.image %}
+                        <img src="{{post.image.image.url}}">
+                    {% endif %}
+                    <p>{{post.date}}</p>
+                </div>
+                <p class="post_content">{{post.content}}</p>
+            </a>
         </div>
+
     {% endfor %}
 {% endblock %}

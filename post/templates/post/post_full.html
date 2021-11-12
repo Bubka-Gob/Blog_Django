@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="full_header">{{post.name}}</h2>
+    <p class="full_content">{{post.content}}</p>
+    {% for image in images %}
+        <img src="{{image.image.url}}">
+    {% endfor %}
+    {% for video in videos %}
+        <video controls>
+            <source src="{{video.video.url}}">
+        </video>
+    {% endfor %}
+    {% for audio in audios %}
+        <audio controls>
+            <source src="{{audio.audio.url}}">
+        </audio>
+    {% endfor %}
+{% endblock %}

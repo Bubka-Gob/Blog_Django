@@ -44,6 +44,7 @@ body {
 	padding: 10px;
 	padding-top: 30px;
 	background: white;
+	min-height: 95vh;
 }
 
 .post_container {
@@ -60,7 +61,15 @@ body {
     border-bottom: 2px solid  #6d7b85;
 }
 
-.post_container p {
+.post_header {
+    text-align: center;
+}
+
+.post_content {
+    width: 100%;
+}
+
+.post_container img {
     width: 100%;
 }
 
