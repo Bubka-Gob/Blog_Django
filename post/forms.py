@@ -3,7 +3,7 @@ from django.core.validators import FileExtensionValidator
 
 
 class PostForm (forms.Form):
-    name = forms.CharField()
+    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'name_input'}))
     content = forms.CharField(widget=forms.Textarea())
     images = forms.ImageField(widget=forms.FileInput(attrs={'multiple': True}),
                               required=False)

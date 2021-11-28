@@ -4,6 +4,10 @@ from .models import BlogPost, BlogImage, BlogVideo, BlogAudio
 
 
 def post_creation_view(request):
+    if not request.user.is_authenticated:
+        return redirect('home-page')
+    if not request.user.is_admin:
+        return redirect('home-page')
     if request.method == 'GET':
         form = PostForm()
     else:

@@ -10,16 +10,16 @@
 </head>
 <body>
     <ul class="navigation">
-        <li class="nav_component"><a href="{% url 'home-page' %}">Главная</a></li>
+        <li class="nav_component"><a href="{% url 'home-page' %}">Home</a></li>
         {% if user.is_authenticated %}
-            <li class="nav_component" style="float: right"><a href="{% url 'home-page' %}">Профиль</a></li>
-            <li class="nav_component" style="float: right"><a href="{% url 'logout-page' %}">Выйти</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'home-page' %}">Profile</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'logout-page' %}">Logout</a></li>
             {% if user.is_admin %}
-            <li class="nav_component"><a href="{% url 'post-creation-page' %}">Создать</a></li>
+            <li class="nav_component"><a href="{% url 'post-creation-page' %}">Create</a></li>
             {% endif %}
         {% else %}
-            <li class="nav_component" style="float: right"><a href="{% url 'login-page' %}">Войти</a></li>
-            <li class="nav_component" style="float: right"><a href="{% url 'register-page' %}">Регистрация</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'login-page' %}">Sign in</a></li>
+            <li class="nav_component" style="float: right"><a href="{% url 'register-page' %}">Sign up</a></li>
         {% endif %}
     </ul>
     <div class="main_container">

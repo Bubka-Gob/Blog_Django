@@ -1,3 +1,11 @@
+:root {
+    --login_body_color: #def2f1;
+}
+
+body {
+    background: var(--login_body_color);
+}
+
 .main_container {
     top: 100px;
     left: 35%;
@@ -22,10 +30,6 @@
 
 .form_box input:focus {
     background: #b4bdbf;
-}
-
-.form_box input:checked {
-    background: red;
 }
 
 .form_box button {

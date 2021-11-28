@@ -6,16 +6,16 @@ from .models import UserModel
 
 class RegistrationForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Пароль', 'autocomplete': 'new-password'}))
+        attrs={'placeholder': 'Password', 'autocomplete': 'new-password'}))
     password2 = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Подтверждение пароля', 'autocomplete': 'new-password'}))
+        attrs={'placeholder': 'Password confirmation', 'autocomplete': 'new-password'}))
 
     class Meta:
         model = UserModel
         fields = ['email', 'name', 'password1', 'password2']
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Email адрес'}),
-            'name': forms.TextInput(attrs={'placeholder': 'Отображаемое имя'})
+            'email': forms.EmailInput(attrs={'placeholder': 'Email address'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Username'})
         }
 
 
@@ -25,8 +25,8 @@ class LoginForm(forms.ModelForm):
         model = UserModel
         fields = ('email', 'password')
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Email адрес'}),
-            'password': forms.PasswordInput(attrs={'placeholder': 'Пароль'})
+            'email': forms.EmailInput(attrs={'placeholder': 'Email address'}),
+            'password': forms.PasswordInput(attrs={'placeholder': 'Password'})
         }
 
     def clean(self):
@@ -34,7 +34,7 @@ class LoginForm(forms.ModelForm):
             email = self.cleaned_data['email']
         else:
             email = ' '
-            raise forms.ValidationError('Некорректный Email')
+            raise forms.ValidationError('Incorrect Email')
         password = self.cleaned_data['password']
         if not authenticate(email=email, password=password):
-            raise forms.ValidationError('Неверный Email или пароль')
+            raise forms.ValidationError('Incorrect Email or password')

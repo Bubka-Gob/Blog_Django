@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" autocomplete="off" class="form_post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Создать</button>>
+        {{form.name}}
+        {{form.content}}
+        <p>{{form.images.label}}:</p>
+        {{form.images}}
+        <p>{{form.videos.label}}:</p>
+        {{form.videos}}
+        <p>{{form.audios.label}}:</p>
+        {{form.audios}}
+        <button type="submit">Create</button>>
     </form>
 {% endblock %}

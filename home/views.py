@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from post.models import BlogPost, BlogImage, BlogVideo, BlogAudio
 from .forms import RegistrationForm, LoginForm
 
-
+# left picture right header
 def home_view(request):
     posts = BlogPost.objects.all()
     posts_list = []

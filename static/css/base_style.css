@@ -1,3 +1,13 @@
+:root {
+    --body_color: #2b7a78;
+    --nav_color: #17252a;
+    --nav_text_color: white;
+    --nav_focus_color: #646e75;
+    --main_color: white;
+    --post_border_color: #6d7b85;
+    --post_background_color: white;
+    --content_color: #17252a;
+}
 
 * {
     padding: 0;
@@ -6,7 +16,7 @@
 }
 
 body {
-    background: #dce9f2;
+    background: var(--body_color);
 }
 
 .navigation {
@@ -14,7 +24,7 @@ body {
     top: 0px;
     left: 0px;
     right: 0px;
-    background: #6d7b85;
+    background: var(--nav_color);
     z-index: 100;
     padding-left: 15%;
     padding-right: 15%;
@@ -28,12 +38,12 @@ body {
 .nav_component a {
     display: block;
     padding: 15px;
-    color: white;
+    color: var(--nav_text_color);
     text-decoration: none;
 }
 
 .nav_component a:hover {
-    background: #646e75;
+    background: var(--nav_focus_color);
 }
 
 .main_container {
@@ -43,13 +53,14 @@ body {
 	width: 70%;
 	padding: 10px;
 	padding-top: 30px;
-	background: white;
+	background: var(--main_color);
 	min-height: 95vh;
 }
 
 .post_container {
     position: relative;
-    border: 2px solid #6d7b85;
+    background: var(--post_background_color);
+    border: 8px solid var(--post_border_color);
     border-radius: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -57,20 +68,52 @@ body {
     padding-left: 20px;
 }
 
-.post_container div {
-    border-bottom: 2px solid  #6d7b85;
+.post_container > a {
+    text-decoration: none;
+    color: var(--content_color);
 }
 
-.post_header {
+.post_container h2 {
     text-align: center;
+}
+
+.post_container img {
+    width: 100%;
 }
 
 .post_content {
     width: 100%;
 }
 
-.post_container img {
-    width: 100%;
+.form_post * {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    left: 15%;
+    width: 70%;
+}
+
+.form_post textarea {
+    resize: none;
+    height: 300px;
+}
+
+.form_post button {
+    padding: 15px;
+}
+
+.name_input {
+    font-size: 16pt;
+}
+
+.name_input, .form_post textarea {
+    border: 5px solid var(--post_border_color);
+    padding: 10px;
+}
+
+.name_input:focus, .form_post textarea:focus {
+    outline: none;
+    border: 5px solid var(--body_color);
 }
 
 @media only screen and (max-width: 600px) {
