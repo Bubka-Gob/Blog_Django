@@ -44,6 +44,11 @@ def home_view(request):
     return render(request, 'home/home.html', {'posts': posts_list})
 
 
+def profile_view(request):
+    if request.method == 'GET':
+        return render(request, 'home/profile.html')
+
+
 def register_view(request):
     if request.method == 'GET':
         form = RegistrationForm()
